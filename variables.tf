@@ -663,3 +663,9 @@ variable "lambda_architecture" {
     error_message = "`lambda_architecture` value is not valid, valid values are: `arm64` and `x86_64`."
   }
 }
+
+variable "sqs_build_queue_sse_enabled" {
+  description = "Enable TLS for the SQS build queue"
+  type        = bool
+  default     = false
+}

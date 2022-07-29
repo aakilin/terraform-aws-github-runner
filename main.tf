@@ -58,7 +58,7 @@ resource "aws_sqs_queue" "queued_builds" {
   fifo_queue                  = var.fifo_build_queue
   receive_wait_time_seconds   = 0
   content_based_deduplication = var.fifo_build_queue
-  sqs_managed_sse_enabled     = true
+  sqs_managed_sse_enabled     = var.sqs_build_queue_sse_enabled
   redrive_policy = var.redrive_build_queue.enabled ? jsonencode({
     deadLetterTargetArn = aws_sqs_queue.queued_builds_dlq[0].arn,
     maxReceiveCount     = var.redrive_build_queue.maxReceiveCount
